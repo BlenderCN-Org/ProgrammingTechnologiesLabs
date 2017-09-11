@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8"/>
+    <title>Auth</title>
+    <style>
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 10px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+}
+    </style>
+</head>
+<body>
+
+    <form action="/login/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Log In" class="button"/>
+    </form>
+
+</body>
+</html>
