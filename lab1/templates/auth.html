@@ -19,10 +19,14 @@
 </head>
 <body>
 
-    <form action="/login/" method="post">
+    <form action="/login/" method="POST">
         {% csrf_token %}
-        {{ form }}
+        {{ form.as_p }}
         <input type="submit" value="Log In" class="button"/>
+    </form>
+    <p></p>
+    <form action="/signup/" method="GET">
+        <input type="submit" class="button" value="Sign Up" />
     </form>
 
 </body>
