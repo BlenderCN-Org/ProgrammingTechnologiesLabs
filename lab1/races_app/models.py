@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
@@ -20,43 +21,24 @@ class Participation(models.Model):
     place = models.IntegerField(null=True)
 
 
-class User(models.Model):
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    email = models.EmailField()
-    password = models.CharField(max_length=255)
-
-
-class Client(User):
-    phone = models.CharField(max_length=15)
-
-
-class Administrator(User):
-    nickname = models.CharField(max_length=127)
-
-
-class Bookmaker(User):
-    rating = models.FloatField
-
-
 class BetType(models.Model):
     type = models.IntegerField
 
 
 class Rate(models.Model):
-    creator = models.ForeignKey(Bookmaker, on_delete=models.CASCADE)
+    creator = models.ForeignKey(User, on_delete=models.CASCADE)
     race = models.ForeignKey(Race, on_delete=models.CASCADE)
     rating = models.FloatField
     bet_type = models.ForeignKey(BetType, on_delete=models.CASCADE)
 
 
 class Bet(models.Model):
-    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    client = models.ForeignKey(User, on_delete=models.CASCADE, related_name='client')
     race = models.ForeignKey(Race, on_delete=models.CASCADE)
     bet_type = models.ForeignKey(BetType, on_delete=models.CASCADE)
     bet = models.FloatField
     approved = models.BooleanField
     win = models.BooleanField
-    approver = models.ForeignKey(Administrator, on_delete=models.CASCADE, null=True)
+    approver = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
 

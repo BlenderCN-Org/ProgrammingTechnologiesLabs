@@ -1,16 +1,14 @@
-from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
-
 # Create your views here.
 from django.views import View
-from django.views.generic import ListView
-
-from races_app.forms import SignInForm, SignUpForm
-from races_app.models import User
 
 
 class SignInFormView(View):
-    form_class = SignInForm
+    form_class = AuthenticationForm
     template_name = 'auth.html'
 
     def get(self, request, *args, **kwargs):
@@ -20,12 +18,17 @@ class SignInFormView(View):
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
         if form.is_valid():
-            return HttpResponseRedirect('/home/')
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(request, username=username, password=raw_password)
+            if user is not None:
+                login(request, user)
+                return HttpResponseRedirect('/home/')
         return render(request, self.template_name, {'form': form})
 
 
 class SignUpFormView(View):
-    form_class = SignUpForm
+    form_class = UserCreationForm
     template_name = 'signup.html'
 
     def get(self, request, *args, **kwargs):
@@ -35,10 +38,16 @@ class SignUpFormView(View):
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
         if form.is_valid():
-            return HttpResponseRedirect('/')
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return HttpResponseRedirect('/home/')
         return render(request, self.template_name, {'form': form})
 
 
+@login_required
 def show_home(request):
     return render(request, 'home.html', {})
 

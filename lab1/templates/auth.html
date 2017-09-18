@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <link rel="stylesheet" href="{% static "style.css"  %}"/>
-    <meta charset="UTF-8"/>
-    <title>Auth</title>
+{% extends "base.html" %}
 
-</head>
-<body>
-
-    <form action="/" method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Log In" class="button"/>
-    </form>
-    <p></p>
-    <form action="/signup/" method="GET">
-        <input type="submit" class="button" value="Sign Up" />
-    </form>
-
-</body>
-</html>
+{% block content %}
+<form action="/" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Log In" class="button"/>
+</form>
+<p></p>
+<form action="/signup/" method="GET">
+    <input type="submit" class="button" value="Sign Up" />
+</form>
+{% endblock %}
