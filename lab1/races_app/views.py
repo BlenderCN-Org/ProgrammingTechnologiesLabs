@@ -6,6 +6,8 @@ from django.shortcuts import render
 # Create your views here.
 from django.views import View
 
+from races_app.models import Race, Participation
+
 
 class SignInFormView(View):
     form_class = AuthenticationForm
@@ -49,7 +51,9 @@ class SignUpFormView(View):
 
 @login_required
 def show_home(request):
-    return render(request, 'home.html', {})
+    races = Race.objects.filter().order_by('track')
+    print(races.get().horses)
+    return render(request, 'races_list.html', {'races': races})
 
 
 
