@@ -15,7 +15,7 @@ SECRET_KEY = 'q=h$&(7404%2kg&&27nt%5zg3a@_7n8b$w=k_3(@39cm6e=u)e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://races-app.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['races-app.herokuapp.com', 'localhost', '127.0.0.1']
 
 API_VERSION = 'v0'
 
