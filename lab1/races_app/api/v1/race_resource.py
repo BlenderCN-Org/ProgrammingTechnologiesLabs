@@ -1,6 +1,6 @@
 from restless.preparers import FieldsPreparer, SubPreparer, CollectionSubPreparer
 
-from races_app.api.base_resource import BaseResource
+from races_app.api.v1.base_resource import BaseResource
 from races_app.models import Race
 
 

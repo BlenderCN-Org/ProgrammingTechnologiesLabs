@@ -3,7 +3,7 @@ import json
 from restless.preparers import FieldsPreparer
 from restless.resources import skip_prepare
 
-from races_app.api.base_resource import BaseResource
+from races_app.api.v1.base_resource import BaseResource
 from races_app.models import Bet, Participation
 
 

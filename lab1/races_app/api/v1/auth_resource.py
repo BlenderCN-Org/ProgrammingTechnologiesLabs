@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from jwt_auth.forms import JSONWebTokenForm
 from restless.resources import skip_prepare
 
-from races_app.api.base_resource import BaseResource
+from races_app.api.v1.base_resource import BaseResource
 
 
 class AuthResource(BaseResource):
