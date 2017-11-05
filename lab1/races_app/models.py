@@ -46,11 +46,15 @@ class Bet(models.Model):
     client = models.ForeignKey(User, on_delete=models.CASCADE, related_name='client')
     participant = models.ForeignKey(Participation, on_delete=models.CASCADE, null=True)
     rating = models.FloatField(default=0)
-    bet_type = models.ForeignKey(BetType, on_delete=models.CASCADE)
     bet = models.FloatField(default=0)
-    approved = models.BooleanField()
-    win = models.BooleanField()
-    approver = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    approved = models.NullBooleanField(null=True)
+    win = models.NullBooleanField(null=True)
+
+    def result(self):
+        if self.win:
+            return self.bet * self.rating
+        else:
+            return -self.bet
 
 
 class UserDetail(models.Model):

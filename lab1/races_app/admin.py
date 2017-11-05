@@ -1,7 +1,10 @@
 from django.contrib import admin
 
 # Register your models here.
-from races_app.models import Race, Horse, Participation, Organization
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import User
+
+from races_app.models import Race, Horse, Participation, Organization, Bet
 
 
 # class ParticipationInline(admin.TabularInline):
@@ -11,6 +14,10 @@ from races_app.models import Race, Horse, Participation, Organization
 
 class ParticipationInline(admin.TabularInline):
     model = Participation
+
+
+class BetInline(admin.TabularInline):
+    model = Bet
 
 
 class RaceAdmin(admin.ModelAdmin):
@@ -30,6 +37,13 @@ class HorseAdmin(admin.ModelAdmin):
     list_display = ['name']
 
 
+class CustomUserAdmin(UserAdmin):
+    model = User
+    inlines = [
+        BetInline
+    ]
+admin.site.unregister(User)
+admin.site.register(User, CustomUserAdmin)
 admin.site.register(Race, RaceAdmin)
 admin.site.register(Horse, HorseAdmin)
 admin.site.register(Organization)

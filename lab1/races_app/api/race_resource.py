@@ -30,8 +30,15 @@ class RaceResource(BaseResource):
     })
 
     def list(self, *args, **kwargs):
-        skip = int(self.request.GET['skip'])
-        count = int(self.request.GET['count'])
+        if 'skip' in self.request.GET:
+            skip = int(self.request.GET['skip'])
+        else:
+            skip = 0
+        if 'count' in self.request.GET:
+            count = int(self.request.GET['count'])
+        else:
+            count = 10
+
         return Race.objects.all()[skip: skip + count]
 
     def detail(self, pk):
