@@ -1,5 +1,4 @@
 from django.conf.urls import url, include
-from jwt_auth.views import obtain_jwt_token
 
 from races_app.api.auth_resource import AuthResource
 from races_app.api.bet_resource import BetResource

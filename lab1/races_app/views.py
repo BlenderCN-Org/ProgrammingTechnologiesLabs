@@ -1,16 +1,13 @@
-import json
-
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 # Create your views here.
-from django.utils.encoding import smart_text
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 
-from races_app.models import Race, Participation
+from races_app.models import Race
 
 
 class SignInFormView(View):

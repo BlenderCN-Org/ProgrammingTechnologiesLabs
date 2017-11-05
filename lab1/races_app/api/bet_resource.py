@@ -1,8 +1,6 @@
 import json
 
-import null
-from django.contrib.auth.models import User
-from restless.preparers import FieldsPreparer, SubPreparer
+from restless.preparers import FieldsPreparer
 from restless.resources import skip_prepare
 
 from races_app.api.base_resource import BaseResource
