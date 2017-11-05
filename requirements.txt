@@ -1,3 +1,8 @@
 Django==1.11.5
+django-tastypie==0.14.0
+django-filter==1.0.4
 django-split-settings
+djangorestframework
+django-extensions==1.9.7
+restless==2.1.1
 psycopg2

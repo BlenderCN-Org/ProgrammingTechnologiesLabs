@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 # Create your views here.
 from django.views import View
@@ -54,6 +54,12 @@ def show_home(request):
     races = Race.objects.filter().order_by('track')
     print(races.get().horses)
     return render(request, 'races_list.html', {'races': races})
+
+
+def get_schedule(request):
+    races = Race.objects.all()
+    return JsonResponse(races, safe=False)
+
 
 
 
