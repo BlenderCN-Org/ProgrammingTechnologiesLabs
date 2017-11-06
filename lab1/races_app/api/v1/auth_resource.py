@@ -32,7 +32,12 @@ class AuthResource(BaseResource):
         except ValueError as error:
             raise error
 
-        form = JSONWebTokenForm(request_json)
+        credentials = {
+            'username': request_json['email'],
+            'password': request_json['password']
+        }
+
+        form = JSONWebTokenForm(credentials)
 
         if not form.is_valid():
             raise ValueError(form.errors['__all__'][0])
@@ -47,21 +52,25 @@ class AuthResource(BaseResource):
             request_json = json.loads(self.request.body.decode("utf-8"))
         except ValueError as error:
             raise error
-        username = request_json['username']
         first_name = request_json['first_name']
         last_name = request_json['last_name']
         email = request_json['email']
         password = request_json['password']
 
-        user = User(username=username, first_name=first_name, last_name=last_name, email=email)
+        user = User(username=email, first_name=first_name, last_name=last_name, email=email)
         user.set_password(password)
         user.save()
+
+        credentials = {
+            'username': email,
+            'password': password
+        }
 
         # return {
         #     "user": user
         # }
 
-        form = JSONWebTokenForm(request_json)
+        form = JSONWebTokenForm(credentials)
 
         if not form.is_valid():
             raise ValueError(form.errors['__all__'][0])

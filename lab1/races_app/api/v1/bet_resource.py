@@ -1,5 +1,6 @@
 import json
 
+from django.contrib.auth.models import User
 from restless.preparers import FieldsPreparer
 from restless.resources import skip_prepare
 
@@ -19,7 +20,7 @@ class BetResource(BaseResource):
         'result': 'result'
     })
 
-    def list(self, *args, **kwargs):
+    def list(self, pk=0):
         return Bet.objects.filter(client_id=self.request.client.id).all()
 
     @skip_prepare

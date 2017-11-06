@@ -58,5 +58,5 @@ class Bet(models.Model):
 
 
 class UserDetail(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='details')
     avatar = models.CharField(max_length=255)
