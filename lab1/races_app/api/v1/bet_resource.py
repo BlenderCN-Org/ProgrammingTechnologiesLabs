@@ -15,7 +15,7 @@ class BetResource(BaseResource):
         'bet': 'bet',
         'rating': 'rating',
         'participant_id': 'participant_id',
-        'race_date': 'participant.race.date',
+        'race_date': 'participant.race.date.timestamp',
         'horse_name': 'participant.horse.name',
         'result': 'result'
     })
