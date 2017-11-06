@@ -24,6 +24,11 @@ class BetResource(BaseResource):
         return self.get_page(Bet.objects
                              .filter(client_id=self.request.client.id).all())
 
+    def wrap_list_response(self, data):
+        return {
+            'bets': data
+        }
+
     @skip_prepare
     def create(self, *args, **kwargs):
         body = json.loads(self.request.body.decode("utf-8"))
