@@ -1,6 +1,7 @@
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import datetime
 import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -33,6 +34,7 @@ INSTALLED_APPS = [
 
 
 JWT_ALLOW_REFRESH = False
+JWT_EXPIRATION_DELTA = datetime.timedelta(days=10)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
