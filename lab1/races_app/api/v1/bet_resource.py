@@ -20,8 +20,9 @@ class BetResource(BaseResource):
         'result': 'result'
     })
 
-    def list(self, pk=0):
-        return Bet.objects.filter(client_id=self.request.client.id).all()
+    def list(self):
+        return self.get_page(Bet.objects
+                             .filter(client_id=self.request.client.id).all())
 
     @skip_prepare
     def create(self, *args, **kwargs):

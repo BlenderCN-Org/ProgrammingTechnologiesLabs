@@ -25,6 +25,17 @@ class BaseResource(DjangoResource):
             print(error)
             return False
 
+    def get_page(self, query_result):
+        if 'skip' in self.request.GET:
+            skip = int(self.request.GET['skip'])
+        else:
+            skip = 0
+        if 'count' in self.request.GET:
+            count = int(self.request.GET['count'])
+        else:
+            count = 10
+        return query_result[skip: skip + count]
+
 
 def wrapped_response(data, status):
     return {

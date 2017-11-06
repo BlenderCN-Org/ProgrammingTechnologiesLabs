@@ -44,7 +44,7 @@ class Participation(models.Model):
 
 class Bet(models.Model):
     client = models.ForeignKey(User, on_delete=models.CASCADE, related_name='client')
-    participant = models.ForeignKey(Participation, on_delete=models.CASCADE, null=True)
+    participant = models.ForeignKey(Participation, on_delete=models.CASCADE, null=True, related_name='bets')
     rating = models.FloatField(default=0)
     bet = models.FloatField(default=0)
     approved = models.NullBooleanField(null=True)

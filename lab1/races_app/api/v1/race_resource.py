@@ -16,11 +16,19 @@ class RaceResource(BaseResource):
         'name': 'name'
     })
 
+    bet_preparer = FieldsPreparer(fields={
+        'bet': 'bet',
+        'rating': 'rating'
+    })
+
     participant_preparer = FieldsPreparer(fields={
         'id': 'id',
         'horse': SubPreparer('horse', horse_preparer),
-        'rating': 'rate'
+        'rating': 'rate',
+        'bets': CollectionSubPreparer('bets.all', bet_preparer)
     })
+
+
 
     preparer = FieldsPreparer(fields={
         'id': 'id',
@@ -30,16 +38,7 @@ class RaceResource(BaseResource):
     })
 
     def list(self, *args, **kwargs):
-        if 'skip' in self.request.GET:
-            skip = int(self.request.GET['skip'])
-        else:
-            skip = 0
-        if 'count' in self.request.GET:
-            count = int(self.request.GET['count'])
-        else:
-            count = 10
-
-        return Race.objects.all()[skip: skip + count]
+        return self.get_page(Race.objects.all())
 
     def detail(self, pk):
         return Race.objects.get(id=pk)
