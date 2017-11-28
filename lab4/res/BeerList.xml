@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BeerList xmlns="BeerSchemaNS"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="BeerSchemaNS BeerSchema.xsd">
+    <Beer name="beer1">
+        <BeerType>dark</BeerType>
+        <Alcohol>true</Alcohol>
+        <Manufacture>SomeManufacture</Manufacture>
+        <Ingredients>
+            <Ingredient>water</Ingredient>
+            <Ingredient>ingredient1</Ingredient>
+            <Ingredient>ingredient2</Ingredient>
+        </Ingredients>
+        <Chars>
+            <AlcoholContention>5</AlcoholContention>
+            <Transparency>89.23%</Transparency>
+            <Filtered>false</Filtered>
+            <NutritionalValue>300cal</NutritionalValue>
+            <DispensingMethod volume="2" containerMaterial="plastic"/>
+        </Chars>
+    </Beer>
+
+    <Beer name="beer2">
+        <BeerType>light</BeerType>
+        <Alcohol>true</Alcohol>
+        <Manufacture>SomeManufacture</Manufacture>
+        <Ingredients>
+            <Ingredient>water</Ingredient>
+        </Ingredients>
+        <Chars>
+            <AlcoholContention>4</AlcoholContention>
+            <Transparency>2.5%</Transparency>
+            <Filtered>true</Filtered>
+            <NutritionalValue>200cal</NutritionalValue>
+            <DispensingMethod volume="0.5" containerMaterial="glass"/>
+        </Chars>
+    </Beer>
+
+    <Beer name="beer3">
+        <BeerType>light</BeerType>
+        <Alcohol>true</Alcohol>
+        <Manufacture>SomeManufacture</Manufacture>
+        <Ingredients>
+            <Ingredient>water</Ingredient>
+        </Ingredients>
+        <Chars>
+            <AlcoholContention>1</AlcoholContention>
+            <Transparency>2.5%</Transparency>
+            <Filtered>true</Filtered>
+            <NutritionalValue>200cal</NutritionalValue>
+            <DispensingMethod volume="0.5" containerMaterial="glass"/>
+        </Chars>
+    </Beer>
+
+    <Beer name="beer4">
+        <BeerType>light</BeerType>
+        <Alcohol>true</Alcohol>
+        <Manufacture>SomeManufacture</Manufacture>
+        <Ingredients>
+            <Ingredient>water</Ingredient>
+        </Ingredients>
+        <Chars>
+            <AlcoholContention>10</AlcoholContention>
+            <Transparency>2.5%</Transparency>
+            <Filtered>true</Filtered>
+            <NutritionalValue>150cal</NutritionalValue>
+            <DispensingMethod volume="0.5" containerMaterial="glass"/>
+        </Chars>
+    </Beer>
+</BeerList>
