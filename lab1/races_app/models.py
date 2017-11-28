@@ -51,6 +51,8 @@ class Bet(models.Model):
     win = models.NullBooleanField(null=True)
 
     def result(self):
+        if self.win is None:
+            return None
         if self.win:
             return self.bet * self.rating
         else:
