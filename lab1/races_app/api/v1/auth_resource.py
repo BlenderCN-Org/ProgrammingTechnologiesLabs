@@ -66,10 +66,6 @@ class AuthResource(BaseResource):
             'password': password
         }
 
-        # return {
-        #     "user": user
-        # }
-
         form = JSONWebTokenForm(credentials)
 
         if not form.is_valid():

@@ -12,10 +12,7 @@ class BaseResource(DjangoResource):
 
     def is_authenticated(self):
         try:
-            print("checking")
             auth = JSONWebTokenAuthMixin().authenticate(self.request)
-            print("get auth")
-            print(auth)
             if auth is not None:
                 self.request.client = auth[0]
                 return True

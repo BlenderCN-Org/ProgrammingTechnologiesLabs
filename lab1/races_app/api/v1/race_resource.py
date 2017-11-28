@@ -28,8 +28,6 @@ class RaceResource(BaseResource):
         'bets': CollectionSubPreparer('bets.all', bet_preparer)
     })
 
-
-
     preparer = FieldsPreparer(fields={
         'id': 'id',
         'title': 'track',
