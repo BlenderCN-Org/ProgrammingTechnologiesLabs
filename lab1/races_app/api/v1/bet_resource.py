@@ -17,7 +17,8 @@ class BetResource(BaseResource):
         'participant_id': 'participant_id',
         'race_date': 'participant.race.date.timestamp',
         'horse_name': 'participant.horse.name',
-        'result': 'result'
+        'result': 'result',
+        'success': 'win',
     })
 
     def list(self):
