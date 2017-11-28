@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
-from races_app.models import Race, Horse, Participation, Organization, Bet
+from races_app.models import Race, Horse, Participation, Organization, Bet, UserDetail
 
 
 # class ParticipationInline(admin.TabularInline):
@@ -17,6 +17,15 @@ class ParticipationInline(admin.TabularInline):
 
 class BetInline(admin.TabularInline):
     model = Bet
+
+
+class UserDetailInline(admin.StackedInline):
+    model = UserDetail
+    extra = 1
+    max_num = 1
+    can_delete = False
+
+    fields = ('avatar',)
 
 
 class RaceAdmin(admin.ModelAdmin):
@@ -39,8 +48,11 @@ class HorseAdmin(admin.ModelAdmin):
 class CustomUserAdmin(UserAdmin):
     model = User
     inlines = [
-        BetInline
+        BetInline,
+        UserDetailInline
     ]
+
+
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
 admin.site.register(Race, RaceAdmin)

@@ -56,7 +56,6 @@ class AuthResource(BaseResource):
         last_name = request_json['last_name']
         email = request_json['email']
         password = request_json['password']
-
         user = User(username=email, first_name=first_name, last_name=last_name, email=email)
         user.set_password(password)
         user.save()

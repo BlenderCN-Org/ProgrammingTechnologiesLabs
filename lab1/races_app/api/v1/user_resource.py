@@ -14,7 +14,7 @@ class UserResource(BaseResource):
         'first_name': 'first_name',
         'last_name': 'last_name',
         'email': 'email',
-        'details': SubPreparer('details.first', details_preparer)
+        'details': SubPreparer('detail.first', details_preparer)
     })
 
     def detail(self):
