@@ -19,6 +19,12 @@ module Lab4
     dom_beer_list
       .sort_by { |beer| beer.chars.alcohol_contention }
       .each { |beer| puts "<DOM-PARSER> #{beer.name} --> #{beer.chars.alcohol_contention}" }
+      # .each {|beer|
+      #   beer.chars.transparency = '15%'
+      #   puts beer.chars.transparency
+      # }
+
+
 
     puts('==================================================================')
 

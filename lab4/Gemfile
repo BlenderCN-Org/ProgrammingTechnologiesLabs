@@ -7,4 +7,6 @@ gemspec
 
 gem 'nokogiri', '~> 1.6'
 gem 'nokogiri-happymapper', require: 'happymapper'
+gem 'ruby-enum', '~> 0.7.1'
 gem 'sax-machine'
+
