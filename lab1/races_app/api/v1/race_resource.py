@@ -31,6 +31,7 @@ class RaceResource(BaseResource):
     preparer = FieldsPreparer(fields={
         'id': 'id',
         'title': 'track',
+        'dateTime': 'date.timestamp',
         'organizer': SubPreparer('organizer', organizer_preparer),
         'participants': CollectionSubPreparer('participants.all', participant_preparer)
     })
