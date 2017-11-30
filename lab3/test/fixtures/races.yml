@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  track: MyString
+  organizer: 
+  date: 2017-11-30 02:21:33
+
+two:
+  track: MyString
+  organizer: 
+  date: 2017-11-30 02:21:33
