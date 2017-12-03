@@ -1,0 +1,12 @@
+source 'https://rubygems.org'
+
+git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
+
+# Specify your gem's dependencies in lab4.gemspec
+gemspec
+
+gem 'nokogiri', '~> 1.6'
+gem 'nokogiri-happymapper', require: 'happymapper'
+gem 'ruby-enum', '~> 0.7.1'
+gem 'sax-machine'
+

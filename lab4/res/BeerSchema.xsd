@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="BeerSchemaNS"
+        xmlns="BeerSchemaNS"
+        elementFormDefault="qualified">
+
+
+    <xs:element name="BeerList">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Beer" type="Beer" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+
+    </xs:element>
+
+
+    <xs:simpleType name="BeerType">
+        <xs:restriction base="xs:string">
+
+            <xs:enumeration value="dark"/>
+            <xs:enumeration value="light"/>
+            <xs:enumeration value="lager"/>
+            <xs:enumeration value="live"/>
+
+        </xs:restriction>
+
+    </xs:simpleType>
+
+    <xs:simpleType name="Manufacture">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+
+    <xs:complexType name="Ingredients">
+        <xs:sequence>
+            <xs:element name="Ingredient" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="Chars">
+        <xs:all>
+            <xs:element name="AlcoholContention" type="AlcoholContention"/>
+            <xs:element name="Transparency" type="Transparency"/>
+            <xs:element name="Filtered" type="Filtered"/>
+            <xs:element name="NutritionalValue" type="NutritionalValue"/>
+            <xs:element name="DispensingMethod" type="DispensingMethod"/>
+        </xs:all>
+    </xs:complexType>
+
+
+    <xs:simpleType name="AlcoholContention">
+        <xs:restriction base="xs:nonNegativeInteger"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Transparency">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]+\.?[0-9]+%"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filtered">
+        <xs:restriction base="xs:boolean"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="NutritionalValue">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]+cal"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Volume">
+        <xs:restriction base="xs:float">
+            <xs:minInclusive value="0.125"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="ContainerMaterial">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="plastic"/>
+            <xs:enumeration value="glass"/>
+            <xs:enumeration value="metal"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="DispensingMethod">
+        <xs:attribute name="volume"  type="Volume" use="required"/>
+        <xs:attribute name="containerMaterial" type="ContainerMaterial" use="required"/>
+
+    </xs:complexType>
+
+
+    <xs:simpleType name="Alcohol">
+        <xs:restriction base="xs:boolean"/>
+    </xs:simpleType>
+
+    <xs:complexType name="Beer">
+        <xs:sequence>
+            <xs:element name="BeerType" type="BeerType"/>
+            <xs:element name="Alcohol" type="Alcohol"/>
+            <xs:element name="Manufacture" type="Manufacture"/>
+            <xs:element name="Ingredients" type="Ingredients"/>
+            <xs:element name="Chars" type="Chars"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+
+
+
+
+</xs:schema>
