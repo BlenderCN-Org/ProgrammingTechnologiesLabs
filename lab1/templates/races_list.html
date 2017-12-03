@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for race in races %}
+        <h2>{{ race.track }}</h2>
+        <p> {{ race.loops }}</p>
+        {% for horse in race.horses.all %}
+            <h3> {{ horse.name }}</h3>
+        {% endfor %}
+    {% endfor %}
+{% endblock %}

@@ -1,2 +1,8 @@
 Django==1.11.5
+django-filter==1.0.4
+django-split-settings
+django-extensions==1.9.7
+restless==2.1.1
+django-jwt-auth
+dj-database-url
 psycopg2
